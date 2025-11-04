@@ -1,28 +1,51 @@
-import { useState } from 'react'
+import React from 'react';
+import Navbar from './components/Navbar';
+import HeroSpline from './components/HeroSpline';
+import MenuShowcase from './components/MenuShowcase';
+import ReservationSection from './components/ReservationSection';
+import { motion } from 'framer-motion';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+    <div className="min-h-screen bg-white text-slate-900 selection:bg-amber-200 selection:text-slate-900 dark:bg-[#0B0B0F] dark:text-slate-100">
+      <Navbar />
+      <HeroSpline />
+      <MenuShowcase />
+      <ReservationSection />
+
+      <footer id="contact" className="relative border-t border-black/5 dark:border-white/10 py-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div>
+              <h5 className="text-lg font-semibold">Aurora Bistro</h5>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">123 Colorway Ave, Suite 5 • Open daily 11am – 11pm</p>
+            </div>
+            <div>
+              <h6 className="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Contact</h6>
+              <p className="mt-2 text-sm">reservations@aurorabistro.com</p>
+              <p className="text-sm">(555) 000-1234</p>
+            </div>
+            <div>
+              <h6 className="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Follow</h6>
+              <div className="mt-2 flex gap-3 text-sm">
+                <a href="#" className="hover:underline">Instagram</a>
+                <a href="#" className="hover:underline">TikTok</a>
+                <a href="#" className="hover:underline">Facebook</a>
+              </div>
+            </div>
+          </div>
+          <motion.p
+            className="mt-8 text-xs text-slate-500 dark:text-slate-400"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
           >
-            Count is {count}
-          </button>
+            © {new Date().getFullYear()} Aurora Bistro. All rights reserved.
+          </motion.p>
         </div>
-      </div>
+      </footer>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
